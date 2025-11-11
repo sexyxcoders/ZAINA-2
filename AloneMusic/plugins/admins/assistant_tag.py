@@ -8,11 +8,15 @@ from AloneMusic.utils.Tnc_checker import admins_check
 # Keep track of chats where tagging is active
 SPAM_CHATS = []
 
+
 # ----------------------------
 # Mention all users individually
 # ----------------------------
 @app.on_message(
-    filters.command(["atag", "amention", "assistanttag", "atagall", "assistag"], prefixes=["/", "@", ".", "#"])
+    filters.command(
+        ["atag", "amention", "assistanttag", "atagall", "assistag"],
+        prefixes=["/", "@", ".", "#"],
+    )
 )
 async def mention_all_users(_, message):
     # Check if sender is admin
@@ -59,13 +63,13 @@ async def mention_all_users(_, message):
                         chat_id=replied.chat.id,
                         text=text_to_send,
                         reply_to_message_id=replied.message_id,
-                        parse_mode=ParseMode.HTML
+                        parse_mode=ParseMode.HTML,
                     )
                 else:
                     await assistant.send_message(
                         chat_id=message.chat.id,
                         text=text_to_send,
-                        parse_mode=ParseMode.HTML
+                        parse_mode=ParseMode.HTML,
                     )
             except Exception as e:
                 print(f"Error mentioning {member.user.id}: {e}")
@@ -89,7 +93,7 @@ async def mention_all_users(_, message):
     filters.command(
         [
             "stopmention",
-            "offall", 
+            "offall",
             "cancel",
             "allstop",
             "stopall",

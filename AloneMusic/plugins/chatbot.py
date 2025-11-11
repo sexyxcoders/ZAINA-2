@@ -87,7 +87,9 @@ class ChatBot:
                     "CAACAgUAAxkBAAEHqW9mQb6x3Ux6g...",
                     "CAACAgUAAxkBAAEHqXFmQb7OoR8jF...",
                 ]
-                await self.assistant_client.send_sticker(chat_id, random.choice(sticker_ids))
+                await self.assistant_client.send_sticker(
+                    chat_id, random.choice(sticker_ids)
+                )
         except Exception as e:
             print(f"[ChatBot Sticker Error] {e}")
 

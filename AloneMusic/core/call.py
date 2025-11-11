@@ -23,6 +23,7 @@ from pytgcalls.types import (
     Update,
 )
 
+
 def dynamic_media_stream(
     path: str, video: bool = False, ffmpeg_params: str = None
 ) -> MediaStream:
@@ -32,9 +33,12 @@ def dynamic_media_stream(
     return MediaStream(
         audio_path=path,
         media_path=path,
-        video_flags=MediaStream.Flags.AUTO_DETECT if video else MediaStream.Flags.IGNORE,
+        video_flags=(
+            MediaStream.Flags.AUTO_DETECT if video else MediaStream.Flags.IGNORE
+        ),
         ffmpeg_parameters=ffmpeg_params,
     )
+
 
 import config
 from strings import get_string

@@ -1,4 +1,3 @@
-
 # ai_chat.py — ChatBot Plugin for ZAINA-2 Music Bot
 # 🔥 Adds /chatbot toggle + auto AI reply for text & sticker
 # ---------------------------------------------------------
@@ -18,7 +17,9 @@ chat_ai = ChatBot(app)
 @app.on_message(filters.command(["chatbot"]) & filters.group)
 async def chatbot_toggle(_, message: Message):
     if len(message.command) < 2:
-        return await message.reply_text("Usage: `/chatbot enable` or `/chatbot disable`", quote=True)
+        return await message.reply_text(
+            "Usage: `/chatbot enable` or `/chatbot disable`", quote=True
+        )
 
     cmd = message.command[1].lower()
     chat_id = message.chat.id
