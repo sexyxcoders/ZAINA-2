@@ -17,13 +17,24 @@ from pyrogram.types import InlineKeyboardMarkup
 from pytgcalls import PyTgCalls
 from pytgcalls.exceptions import NoActiveGroupCall
 from pytgcalls.types import (
-    AudioQuality,
     ChatUpdate,
     MediaStream,
     StreamEnded,
     Update,
-    VideoQuality,
 )
+
+def dynamic_media_stream(
+    path: str, video: bool = False, ffmpeg_params: str = None
+) -> MediaStream:
+    """
+    Compatible version for latest pytgcalls without AudioQuality/VideoQuality.
+    """
+    return MediaStream(
+        audio_path=path,
+        media_path=path,
+        video_flags=MediaStream.Flags.AUTO_DETECT if video else MediaStream.Flags.IGNORE,
+        ffmpeg_parameters=ffmpeg_params,
+    )
 
 import config
 from strings import get_string
